@@ -1,0 +1,13 @@
+# internal-ingress.yaml
+apiVersion: networking.k8s.io/v1beta1
+kind: Ingress
+metadata:
+  name: ilb-ingress
+  namespace: stan-ns
+  annotations:
+    kubernetes.io/ingress.regional-static-ip-name: stan-ip-us-east1
+    kubernetes.io/ingress.class: "gce-internal"
+spec:
+  backend:
+    serviceName: XXXXX
+    servicePort: 80

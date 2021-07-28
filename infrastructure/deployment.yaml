@@ -1,0 +1,27 @@
+# web-deployment.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: XXX
+  name: XXX-server
+  namespace: stan-ns
+spec:
+  selector:
+    matchLabels:
+      app: XXX
+  minReadySeconds: 60
+  replicas: 3
+  template:
+    metadata:
+      labels:
+        app: XXX
+    spec:
+      serviceAccountName: stan-sa
+      containers:
+        - image: gcr.io/XXX
+          name: XXX-server
+          ports:
+            - containerPort: 8080
+              protocol: TCP
+      terminationGracePeriodSeconds: 90
